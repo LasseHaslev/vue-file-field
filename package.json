@@ -6,7 +6,9 @@
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "style": "stylus -c src/styles/VueFileField.styl -o dist/",
+    "prepublish": "npm run build; npm run style;"
   },
   "dependencies": {
     "vue": "^2.0.1"
