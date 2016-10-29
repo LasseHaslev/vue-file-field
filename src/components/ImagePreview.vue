@@ -5,7 +5,7 @@
              :style="{
                 'background-image': isImage ? 'url(' + imageData + ')' : false,
              }">
-            <!-- <div @click="remove" class="VueFileUploader__remove">X</div> -->
+            <div @click="remove" class="VueFileUploader__remove">X</div>
         </div>
             <div class="VueFileUploader__image__info">
                 <div class="VueFileUploader__image__size">{{ formatBytes( image.size, 0 ) }}</div>
