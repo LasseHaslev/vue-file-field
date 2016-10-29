@@ -1,8 +1,8 @@
 <template>
     <div>
         <div v-if="!supported"></div>
-        <input v-if="multiple" @change="inputChanged" type="file" :name="name" multiple>
-        <input v-else @change="inputChanged" type="file" :name="name">
+        <input v-if="multiple" @change="inputChanged" type="file" :name="name" :accept="accept" multiple>
+        <input v-else @change="inputChanged" type="file" :name="name" :accept="accept">
         <image-preview v-for="image in files" :image="image"></image-preview>
     </div>
 </template>
@@ -17,9 +17,9 @@ export default {
             default: 'image',
         },
 
-        extensions: {
+        accept: {
             type: String,
-            default: 'jpg,jpeg,png,gif',
+            default: 'image/*',
         },
 
         multiple: {
