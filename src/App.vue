@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
+    <image-field :multiple="true" accept="image/*" name="image"></image-field>
     <image-field :multiple="true" name="image"></image-field>
   </div>
 </template>

@@ -1,6 +1,14 @@
 $desktop-num = 4
 $image-padding = 18px
 $image-background-color = #CCC
+
+$dropzone-outline = 2px dashed black;
+$dropzone-outline-offset = 0;
+$dropzone-outline-offset-drag = 4px;
+$dropzone-hover-color = #EfEfEf
+
+$image-border-radius = 12%
+
 clearfix()
     &:before,
     &:after
@@ -13,11 +21,19 @@ clearfix()
     *
         box-sizing: border-box
     &__dropzone
+        transition: all .3s
         clearfix()
-        border: 2px dashed #000
+        background-color: white
+        outline: $dropzone-outline;
+        outline-offset: $dropzone-outline-offset;
         min-height: 100px;
         width: 100%;
         cursor:pointer
+        &:hover
+            background-color:$dropzone-hover-color
+            outline-offset: $dropzone-outline-offset-drag;
+        &--drag
+            outline-offset: $dropzone-outline-offset-drag;
     &__image
         float:left
         // margin: $image-padding
@@ -35,6 +51,7 @@ clearfix()
             background-position: center;
             background-size: contain
             background-repeat: no-repeat
+            border-radius: $image-border-radius;
             // margin: $image-padding
     &__remove
         cursor: pointer
