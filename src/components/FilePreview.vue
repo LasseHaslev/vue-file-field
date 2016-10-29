@@ -1,14 +1,14 @@
 <template>
-    <div class="VueFileUploader__file" v-if="fileData">
+    <div class="VueFileField__file" v-if="fileData">
 
-        <div class="VueFileUploader__file__content"
+        <div class="VueFileField__file__content"
              :style="{
                 'background-image': isImage ? 'url(' + fileData + ')' : false,
              }">
-            <!-- <div @click="remove" class="VueFileUploader__remove">X</div> -->
+            <!-- <div @click="remove" class="VueFileField__remove">X</div> -->
         </div>
-            <div class="VueFileUploader__file__info">
-                <div class="VueFileUploader__file__size">{{ formatBytes( file.size, 0 ) }}</div>
+            <div class="VueFileField__file__info">
+                <div class="VueFileField__file__size">{{ formatBytes( file.size, 0 ) }}</div>
             </div>
     </div>
 </template>

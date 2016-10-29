@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 
-require( './styles/VueFileUploader.styl' );
+require( './styles/VueFileField.styl' );
 
 /* eslint-disable no-new */
 new Vue({

@@ -1,7 +1,7 @@
 <template>
-    <div class="VueFileUploader">
+    <div class="VueFileField">
         <div v-if="!supported">Sorry, your browser is not supported.</div>
-        <div class="VueFileUploader__dropzone" @click.prevent="findFile"
+        <div class="VueFileField__dropzone" @click.prevent="findFile"
             @dragover.stop.prevent="addDragOver"
             @dragenter.stop.prevent="addDragOver"
 
@@ -9,12 +9,12 @@
             @dragend.stop.prevent="removeDragOver"
             @drop.stop.prevent="dropFile"
             :class="{
-                'VueFileUploader__dropzone--drag': dragOver,
+                'VueFileField__dropzone--drag': dragOver,
             }">
             <file-preview @remove-file="removeFile" v-for="file in files" :file="file"></file-preview>
         </div>
-        <input class="VueFileUploader__input" v-if="multiple" @change="inputChanged" type="file" :name="name" :accept="accept" multiple>
-        <input class="VueFileUploader__input" v-else @change="inputChanged" type="file" :name="name" :accept="accept">
+        <input class="VueFileField__input" v-if="multiple" @change="inputChanged" type="file" :name="name" :accept="accept" multiple>
+        <input class="VueFileField__input" v-else @change="inputChanged" type="file" :name="name" :accept="accept">
     </div>
 </template>
 <script> 
@@ -50,7 +50,7 @@ export default {
 
     mounted() {
         this.supported = !(!window.File || !window.FileReader || !window.FileList || !window.Blob)
-        this.fileInput = this.$el.querySelector( '.VueFileUploader__input' );
+        this.fileInput = this.$el.querySelector( '.VueFileField__input' );
 
         if ( ! this.fileInput.files ) {
             this.supported = false;

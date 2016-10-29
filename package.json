@@ -1,7 +1,7 @@
 {
-  "name": "vue-image-upload",
+  "name": "@lassehaslev/vue-file-field",
   "version": "1.0.0",
-  "description": "Image uploader Vue style",
+  "description": "File field Vue style",
   "author": "Lasse S. Haslev",
   "private": true,
   "scripts": {

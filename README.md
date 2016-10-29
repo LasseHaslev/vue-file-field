@@ -1,25 +1,25 @@
-# vue-image-upload
+# vue-file-field
 
-> Image uploader Vue style
+> File field Vue style
 
 ## Install
 ``` bash
-npm install @lassehaslev/vue-file-upload --save-dev
+npm install @lassehaslev/vue-file-field --save-dev
 ```
 
 ## Use
 Javascript
 
 ``` js
-    Vue.component( 'image-field', require( '@lassehaslev/vue-file-upload' ) );
+    Vue.component( 'file-field', require( '@lassehaslev/vue-file-field' ) );
 ```
 
 HTML
 ``` html
-    <image-field :multiple="true" accept="image/*" name="image"></image-field>
+    <file-field :multiple="true" accept="image/*" name="file"></file-field>
 ```
 
-Styles can be found under src/styles/VueFileUploader.styl
+Styles can be found under src/styles/VueFileField.styl
 
 ## Build Setup
 
