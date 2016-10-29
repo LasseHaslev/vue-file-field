@@ -5,7 +5,7 @@
              :style="{
                 'background-image': 'url(' + imageData + ')',
              }">
-            <div @click="remove" class="VueFileUploader__remove">X</div>
+            <!-- <div @click="remove" class="VueFileUploader__remove">X</div> -->
         </div>
     </div>
 </template>
@@ -40,7 +40,7 @@ export default {
         },
 
         remove() {
-            console.log( 'remove' );
+            this.$emit( 'remove-image', this.image );
         },
     }
 

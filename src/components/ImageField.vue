@@ -1,7 +1,7 @@
 <template>
     <div class="VueFileUploader">
         <div class="VueFileUploader__dropzone">
-            <image-preview v-for="image in files" :image="image"></image-preview>
+            <image-preview @remove-image="removeImage" v-for="image in files" :image="image"></image-preview>
         </div>
         <div v-if="!supported"></div>
         <input class="VueFileUploader__input" v-if="multiple" @change="inputChanged" type="file" :name="name" :accept="accept" multiple>
@@ -56,6 +56,13 @@ export default {
             this.$nextTick( function() {
                 this.$set( this, 'files', files );
             } );
+        },
+        removeImage( image ) {
+            console.log( this.files );
+            var index = this.files.indexOf( image );
+            if ( index > -1 ) {
+                this.files.splice( index, 1 );
+            }
         },
     },
 
