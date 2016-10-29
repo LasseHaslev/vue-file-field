@@ -1,13 +1,21 @@
-$desktop-num = 4
-$file-padding = 18px
-$file-background-color = #CCC
+$file-field-size-phone ?= 480px
+$file-field-size-tablet ?= 768px
+$file-field-size-desktop ?= 992px
+$file-field-size-desktop-large ?= 1200px
+$file-field-phone-num ?= 2
+$file-field-tablet-num ?= 4
+$file-field-desktop-num ?= 5
+$file-field-desktop-large-num ?= 8
 
-$dropzone-outline = 2px dashed black;
-$dropzone-outline-offset = 0;
-$dropzone-outline-offset-drag = 4px;
-$dropzone-hover-color = #EfEfEf
+$file-field-file-padding ?= 18px
+$file-field-file-background-color ?= #CCC
 
-$file-border-radius = 12%
+$file-field-dropzone-outline ?= 2px dashed black;
+$file-field-dropzone-outline-offset ?= 0;
+$file-field-dropzone-outline-offset-drag ?= 4px;
+$file-field-dropzone-hover-color ?= #EfEfEf
+
+$file-field-file-border-radius ?= 12%
 
 clearfix()
     &:before,
@@ -25,26 +33,32 @@ clearfix()
         transition: all .3s
         clearfix()
         background-color: white
-        outline: $dropzone-outline;
-        outline-offset: $dropzone-outline-offset;
+        outline: $file-field-dropzone-outline;
+        outline-offset: $file-field-dropzone-outline-offset;
         min-height: 130px;
         width: 100%;
         cursor:pointer
         &:hover
-            background-color:$dropzone-hover-color
-            outline-offset: $dropzone-outline-offset-drag;
+            background-color:$file-field-dropzone-hover-color
+            outline-offset: $file-field-dropzone-outline-offset-drag;
         &--drag
-            outline-offset: $dropzone-outline-offset-drag;
+            outline-offset: $file-field-dropzone-outline-offset-drag;
     &__file
         float:left
-        // margin: $file-padding
-        padding: $file-padding
-        // margin-left: (100%/$desktop-num);
-        width: (100%*( 1/$desktop-num ))
+        // margin: $file-field-file-padding
+        padding: $file-field-file-padding
+        // margin-left: (100%/$file-field-desktop-num);
+        width: (100%*( 1/$file-field-phone-num ))
+        @media (min-width: $file-field-size-phone)
+            width: (100%*( 1/$file-field-tablet-num ))
+        @media (min-width: $file-field-size-tablet)
+            width: (100%*( 1/$file-field-desktop-num ))
+        @media (min-width: $file-field-size-desktop)
+            width: (100%*( 1/$file-field-desktop-large-num ))
 
 
         &__content
-            background-color: $file-background-color
+            background-color: $file-field-file-background-color
             width: 100%;
             height: auto;
             padding-bottom: 100%;
@@ -52,8 +66,8 @@ clearfix()
             background-position: center;
             background-size: contain
             background-repeat: no-repeat
-            border-radius: $file-border-radius;
-            // margin: $file-padding
+            border-radius: $file-field-file-border-radius;
+            // margin: $file-field-file-padding
     &__remove
         cursor: pointer
         position: absolute
