@@ -1,7 +1,12 @@
 <template>
-    <div>
-        {{ image.name }}
-        <img v-if="imageData" :src="imageData" alt="">
+    <div class="VueFileUploader__image" v-if="imageData">
+
+        <div class="VueFileUploader__image__content"
+             :style="{
+                'background-image': 'url(' + imageData + ')',
+             }">
+            <div @click="remove" class="VueFileUploader__remove">X</div>
+        </div>
     </div>
 </template>
 <script> 
@@ -32,6 +37,10 @@ export default {
 
         onFileReaderLoad( evt ) {
             this.imageData = evt.target.result;
+        },
+
+        remove() {
+            console.log( 'remove' );
         },
     }
 

@@ -1,9 +1,11 @@
 <template>
-    <div>
+    <div class="VueFileUploader">
+        <div class="VueFileUploader__dropzone">
+            <image-preview v-for="image in files" :image="image"></image-preview>
+        </div>
         <div v-if="!supported"></div>
-        <input v-if="multiple" @change="inputChanged" type="file" :name="name" :accept="accept" multiple>
-        <input v-else @change="inputChanged" type="file" :name="name" :accept="accept">
-        <image-preview v-for="image in files" :image="image"></image-preview>
+        <input class="VueFileUploader__input" v-if="multiple" @change="inputChanged" type="file" :name="name" :accept="accept" multiple>
+        <input class="VueFileUploader__input" v-else @change="inputChanged" type="file" :name="name" :accept="accept">
     </div>
 </template>
 <script> 
@@ -38,7 +40,7 @@ export default {
 
     mounted() {
         this.supported = !(!window.File || !window.FileReader || !window.FileList || !window.Blob)
-        this.fileInput = this.$el.querySelector( 'input[type=file]' );
+        this.fileInput = this.$el.querySelector( '.VueFileUploader__input' );
 
         if ( ! this.fileInput.files ) {
             this.supported = false;

@@ -1,0 +1,52 @@
+$desktop-num = 4
+$image-padding = 18px
+$image-background-color = #CCC
+clearfix()
+    &:before,
+    &:after
+        content: " "; /* 1 */
+        display: table; /* 2 */
+
+    &:after
+        clear: both;
+.VueFileUploader
+    *
+        box-sizing: border-box
+    &__dropzone
+        clearfix()
+        border: 2px dashed #000
+        min-height: 100px;
+        width: 100%;
+    &__image
+        float:left
+        // margin: $image-padding
+        padding: $image-padding
+        // margin-left: (100%/$desktop-num);
+        width: (100%*( 1/$desktop-num ))
+
+
+        &__content
+            background-color: $image-background-color
+            width: 100%;
+            height: auto;
+            padding-bottom: 100%;
+            position: relative
+            background-position: center;
+            background-size: contain
+            background-repeat: no-repeat
+            // margin: $image-padding
+    &__remove
+        cursor: pointer
+        position: absolute
+        background-color: #FFF
+        width:20px;
+        height:20px;
+        top: -5px;
+        right: -5px;
+        text-align:center
+        border-radius: 50%;
+        box-shadow: 2px 2px 5px black
+    // &__input
+        // position: absolute
+        // top: -9999999px
+        // left: -9999999px
