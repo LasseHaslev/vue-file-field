@@ -3,10 +3,13 @@
 
         <div class="VueFileUploader__image__content"
              :style="{
-                'background-image': 'url(' + imageData + ')',
+                'background-image': isImage ? 'url(' + imageData + ')' : false,
              }">
             <!-- <div @click="remove" class="VueFileUploader__remove">X</div> -->
         </div>
+            <div class="VueFileUploader__image__info">
+                <div class="VueFileUploader__image__size">{{ formatBytes( image.size, 0 ) }}</div>
+            </div>
     </div>
 </template>
 <script> 
@@ -21,6 +24,7 @@ export default {
     data() {
         return {
             imageData: null,
+            isImage: false,
         }
     },
 
@@ -30,6 +34,12 @@ export default {
 
     methods: {
         readFile( file ) {
+
+            var imageType = /^image\//;
+            if (imageType.test(file.type)) {
+                this.isImage = true;
+            }
+
             var fileReader = new FileReader();
             fileReader.readAsDataURL( file );
             fileReader.onload = this.onFileReaderLoad;
@@ -42,6 +52,15 @@ export default {
         remove() {
             this.$emit( 'remove-image', this.image );
         },
+
+        formatBytes( bytes, decimals ) {
+            if(bytes == 0) return '0 Byte';
+            var k = 1000; // or 1024 for binary
+            var dm = decimals + 1 || 3;
+            var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+            var i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + sizes[i];
+        }
     }
 
 }
