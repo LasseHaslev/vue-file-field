@@ -1,13 +1,13 @@
 $desktop-num = 4
-$image-padding = 18px
-$image-background-color = #CCC
+$file-padding = 18px
+$file-background-color = #CCC
 
 $dropzone-outline = 2px dashed black;
 $dropzone-outline-offset = 0;
 $dropzone-outline-offset-drag = 4px;
 $dropzone-hover-color = #EfEfEf
 
-$image-border-radius = 12%
+$file-border-radius = 12%
 
 clearfix()
     &:before,
@@ -35,16 +35,16 @@ clearfix()
             outline-offset: $dropzone-outline-offset-drag;
         &--drag
             outline-offset: $dropzone-outline-offset-drag;
-    &__image
+    &__file
         float:left
-        // margin: $image-padding
-        padding: $image-padding
+        // margin: $file-padding
+        padding: $file-padding
         // margin-left: (100%/$desktop-num);
         width: (100%*( 1/$desktop-num ))
 
 
         &__content
-            background-color: $image-background-color
+            background-color: $file-background-color
             width: 100%;
             height: auto;
             padding-bottom: 100%;
@@ -52,8 +52,8 @@ clearfix()
             background-position: center;
             background-size: contain
             background-repeat: no-repeat
-            border-radius: $image-border-radius;
-            // margin: $image-padding
+            border-radius: $file-border-radius;
+            // margin: $file-padding
     &__remove
         cursor: pointer
         position: absolute

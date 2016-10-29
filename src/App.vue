@@ -1,18 +1,18 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <image-field :multiple="true" accept="image/*" name="image"></image-field>
-    <image-field :multiple="true" name="image"></image-field>
+    <file-field :multiple="true" accept="image/*" name="image"></file-field>
+    <file-field :multiple="true" name="image"></file-field>
   </div>
 </template>
 
 <script>
-import ImageField from './components/ImageField.vue'
+import FileField from './components/FileField.vue'
 
 export default {
   name: 'app',
   components: {
-    ImageField
+    FileField
   }
 }
 </script>

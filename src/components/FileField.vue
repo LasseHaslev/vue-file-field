@@ -11,7 +11,7 @@
             :class="{
                 'VueFileUploader__dropzone--drag': dragOver,
             }">
-            <file-preview @remove-image="removeImage" v-for="image in files" :image="image"></file-preview>
+            <file-preview @remove-file="removeFile" v-for="file in files" :file="file"></file-preview>
         </div>
         <input class="VueFileUploader__input" v-if="multiple" @change="inputChanged" type="file" :name="name" :accept="accept" multiple>
         <input class="VueFileUploader__input" v-else @change="inputChanged" type="file" :name="name" :accept="accept">
@@ -19,7 +19,7 @@
 </template>
 <script> 
 
-import ImagePreview from './ImagePreview.vue';
+import FilePreview from './FilePreview.vue';
 
 export default {
     props: {
@@ -67,9 +67,9 @@ export default {
                 this.$set( this, 'files', files );
             } );
         },
-        removeImage( image ) {
+        removeFile( file ) {
             console.log( this.files );
-            var index = this.files.indexOf( image );
+            var index = this.files.indexOf( file );
             if ( index > -1 ) {
                 this.files.splice( index, 1 );
             }
@@ -96,7 +96,7 @@ export default {
     },
 
     components: {
-        ImagePreview,
+        FilePreview,
     }
 
 }

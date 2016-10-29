@@ -1,14 +1,14 @@
 <template>
-    <div class="VueFileUploader__image" v-if="imageData">
+    <div class="VueFileUploader__file" v-if="fileData">
 
-        <div class="VueFileUploader__image__content"
+        <div class="VueFileUploader__file__content"
              :style="{
-                'background-image': isImage ? 'url(' + imageData + ')' : false,
+                'background-image': isImage ? 'url(' + fileData + ')' : false,
              }">
-            <div @click="remove" class="VueFileUploader__remove">X</div>
+            <!-- <div @click="remove" class="VueFileUploader__remove">X</div> -->
         </div>
-            <div class="VueFileUploader__image__info">
-                <div class="VueFileUploader__image__size">{{ formatBytes( image.size, 0 ) }}</div>
+            <div class="VueFileUploader__file__info">
+                <div class="VueFileUploader__file__size">{{ formatBytes( file.size, 0 ) }}</div>
             </div>
     </div>
 </template>
@@ -16,20 +16,20 @@
 export default {
 
     props: {
-        'image': {
+        'file': {
             default:null
         }
     },
 
     data() {
         return {
-            imageData: null,
+            fileData: null,
             isImage: false,
         }
     },
 
     mounted() {
-        this.readFile( this.image );
+        this.readFile( this.file );
     },
 
     methods: {
@@ -46,11 +46,11 @@ export default {
         },
 
         onFileReaderLoad( evt ) {
-            this.imageData = evt.target.result;
+            this.fileData = evt.target.result;
         },
 
         remove() {
-            this.$emit( 'remove-image', this.image );
+            this.$emit( 'remove-file', this.file );
         },
 
         formatBytes( bytes, decimals ) {
