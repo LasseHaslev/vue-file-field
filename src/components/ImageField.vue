@@ -86,7 +86,11 @@ export default {
             this.dragOver = false;
         },
         dropFile( evt ) {
-            this.addFiles( evt.dataTransfer.files );
+            var files = evt.dataTransfer.files;
+            if ( !this.multiple ) {
+                files = [ evt.dataTransfer.files[0] ];
+            }
+            this.addFiles( files );
             this.removeDragOver();
         },
     },
