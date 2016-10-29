@@ -1,6 +1,6 @@
 <template>
     <div class="VueFileUploader">
-        <div class="VueFileUploader__dropzone">
+        <div class="VueFileUploader__dropzone" @click.prevent="onFileClick">
             <image-preview @remove-image="removeImage" v-for="image in files" :image="image"></image-preview>
         </div>
         <div v-if="!supported"></div>
@@ -63,6 +63,10 @@ export default {
             if ( index > -1 ) {
                 this.files.splice( index, 1 );
             }
+        },
+
+        onFileClick() {
+            this.fileInput.click();
         },
     },
 
